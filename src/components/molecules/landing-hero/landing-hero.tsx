@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function LandingHero() {
   return (
     <div
-      className={`w-[100vw] h-[100vh] flex flex-col items-center pt-10 gap-2`}
+      className={`w-[100vw] h-[100vh] flex flex-col items-center pt-10 gap-2 overflow-hidden`}
     >
       <div className={`${styles.title}`}>The Textile Index</div>
       <div className={`${styles.navBar}`}>
@@ -28,10 +28,16 @@ export default function LandingHero() {
           </div>
         </div>
         <div className={styles.fg}>
-          <div className={styles.content}>
-            <div className={`${styles.title} ${styles.heroTitle}`}>
-              The Textile Index
-            </div>
+          <div className={`${styles.title} ${styles.heroTitle}`}>
+            The Textile Index
+          </div>
+          <div className={styles.desc}>
+            The Textile Index is an independent research archive documenting the
+            diverse textile traditions of India. It brings together knowledge of
+            textiles, materials, techniques, processes and the communities
+            behind them, making this information accessible to students,
+            designers, researchers and anyone curious about the textiles that
+            shape our cultural history.
           </div>
         </div>
       </div>
