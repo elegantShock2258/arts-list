@@ -1,5 +1,6 @@
 import styles from "./landing-hero.module.sass";
 import blouse from "../../../assets/blouse-illustration.svg";
+import thread from "../../../assets/thread-illustration.svg";
 import Image from "next/image";
 
 export default function LandingHero() {
@@ -38,6 +39,9 @@ export default function LandingHero() {
             behind them, making this information accessible to students,
             designers, researchers and anyone curious about the textiles that
             shape our cultural history.
+          </div>
+          <div className={styles.thread}>
+            <Image src={thread} alt="thread" objectFit="cover" />
           </div>
         </div>
       </div>
