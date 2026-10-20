@@ -64,6 +64,14 @@
   flex-direction: column;
 }
 
+.thread {
+  width: 80%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .bg {
   width: 100%;
   height: 100%;
@@ -76,7 +84,7 @@
 .desc {
   font-family: Himalaya;
   font-size: 36px;
-  width: 40%;
+  width: 45%;
   text-align: center;
 }
 
