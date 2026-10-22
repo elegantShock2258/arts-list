@@ -10,15 +10,6 @@ module.exports = {
       })
       .join(" ")}`,
   ],
-
-  // Lint & Prettify TS and JS files
-  "**/*.(ts|tsx|js)": (filenames) => [
-    //     `yarn eslint ${filenames.join(" ")}`,
-    `pnpm prettier --write ${filenames.join(" ")}`,
-    "pnpm run lint",
-    "pnpm run build",
-  ],
-
   // Build docker files
   "docker-compose.example.yml": (filenames) => [
     "cp docker-compose.example.yml docker-compose.yml",

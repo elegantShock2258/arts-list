@@ -1,5 +1,6 @@
 import {
   Carousel,
+  CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
@@ -17,21 +18,30 @@ export default async function LandingFeatured() {
       className={`w-[100vw] h-[100vh] flex flex-col items-center justify-center pt-10 gap-2 overflow-hidden`}
     >
       <div className={styles.featured}>Featured</div>
-      <Carousel>
+      <Carousel
+
+        className="w-full max-w-[80vw]"
+        opts={{
+            align: "start",
+            loop: true,
+          }}
+      >
         <CarouselPrevious />
-        {featured.map((post, i) => {
-          return (
-            <CarouselItem key={i}>
-              <div>
-                <FeaturedCard
-                  title={post.title}
-                  link={post.link}
-                  thumbnail={post.thumbnail}
-                />
-              </div>
-            </CarouselItem>
-          );
-        })}
+        <CarouselContent>
+          {featured.map((post, i) => {
+            return (
+              <CarouselItem key={i} className="basis-1/4">
+                <div>
+                  <FeaturedCard
+                    title={post.title}
+                    link={post.link}
+                    thumbnail={post.thumbnail}
+                  />
+                </div>
+              </CarouselItem>
+            );
+          })}
+        </CarouselContent>
         <CarouselNext />
       </Carousel>
     </div>
