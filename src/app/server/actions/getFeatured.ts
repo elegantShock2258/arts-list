@@ -19,15 +19,15 @@ function getTopRecentFolders(targetDir: string = "./posts"): FolderItem[] {
       .map((entry) => {
         const fullPath = path.join(targetDir, entry.name);
         const stats = fs.statSync(fullPath);
-
         return {
           name: entry.name,
-          absolutePath: path.resolve(fullPath),
+          absolutePath: fullPath.replace("public/", ""),
           lastEdited: stats.mtime,
         };
       });
 
     return folders
+      .filter((a) => !a.name.includes("."))
       .sort((a, b) => b.lastEdited.getTime() - a.lastEdited.getTime())
       .slice(0, 10);
   } catch (error) {
@@ -39,7 +39,7 @@ function getTopRecentFolders(targetDir: string = "./posts"): FolderItem[] {
 export async function getFeatured() {
   // fetch from git
   fetchPosts();
-  const topFolders = getTopRecentFolders("./posts");
+  const topFolders = getTopRecentFolders("./public/posts");
 
   return topFolders.map((folder, key) => {
     return {

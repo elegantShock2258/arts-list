@@ -1,6 +1,6 @@
 module.exports = {
   // Type check TypeScript files
-  "**/*.(ts|tsx)": () => "yarn tsc",
+  "**/*.(ts|tsx)": () => "pnpm tsc",
 
   // Compile sass files
   "**/*.(sass|scss)": (filenames) => [
@@ -14,9 +14,9 @@ module.exports = {
   // Lint & Prettify TS and JS files
   "**/*.(ts|tsx|js)": (filenames) => [
     //     `yarn eslint ${filenames.join(" ")}`,
-    `yarn prettier --write ${filenames.join(" ")}`,
-    "yarn run lint",
-    "yarn run build",
+    `pnpm prettier --write ${filenames.join(" ")}`,
+    "pnpm run lint",
+    "pnpm run build",
   ],
 
   // Build docker files
@@ -34,5 +34,5 @@ module.exports = {
   ],
   // Prettify only Markdown and JSON files
   "**/*.(md|json)": (filenames) =>
-    `yarn prettier --write ${filenames.join(" ")}`,
+    `pnpm prettier --write ${filenames.join(" ")}`,
 };
