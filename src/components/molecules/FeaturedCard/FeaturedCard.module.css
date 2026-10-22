@@ -1,3 +1,9 @@
-
+.title {
+  font-family: Himalaya;
+  font-size: 30px;
+  max-width: 300px;
+  text-align: center;
+  line-height: 30px;
+}
 
 /*# sourceMappingURL=FeaturedCard.module.css.map */

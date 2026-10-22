@@ -1,7 +1,4 @@
 export const AsciiArt = `
-
-
-
                                         *@@@@
                                          @@@@@@
                                           =@@@@@=  @@:
