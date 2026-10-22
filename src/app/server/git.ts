@@ -12,7 +12,6 @@ export function fetchPosts() {
     process.exit(1);
   }
 }
-
 export async function pushSubmoduleWithToken(
   commitMessage: string,
   branch: string = "master",

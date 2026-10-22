@@ -17,10 +17,12 @@ export default function FeaturedCard(props: {
     >
       <Image
         alt="thumbnail"
-        src={props.thumbnail}
-        width={100}
-        height={300}
-        objectFit="fill"
+        src={props.thumbnail
+          .split("/")
+          .map((seg) => encodeURIComponent(seg))
+          .join("/")}
+        width={300}
+        height={400}
       />
       <div className={styles.title}>{props.title}</div>
     </div>
