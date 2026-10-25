@@ -13,6 +13,7 @@ html, body {
   width: 100vw;
   height: 100vh;
   background-color: white;
+  overflow-x: hidden;
 }
 
 /*# sourceMappingURL=globals.css.map */

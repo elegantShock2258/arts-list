@@ -1,3 +1,15 @@
+.title {
+  font-family: "Milonguita";
+  text-align: center;
+  font-size: 10rem;
+  color: #892d00;
+}
 
+.explore {
+  font-family: Himalaya;
+  text-align: center;
+  font-size: 2rem;
+  font-style: italic;
+}
 
 /*# sourceMappingURL=landing-archive.module.css.map */
