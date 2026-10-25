@@ -1,6 +1,6 @@
 import styles from './landing-techniques.module.sass'
 
-export default function landingTechniques() {
+export default function LandingTechniques() {
   return <div className='w-[100vw] h-[100vh] overflow-hidden flex'>
     <div className='flex flex-col'>
       <div className={styles.techniqueName}>

@@ -1,19 +1,23 @@
 "use client";
 
-import './MarkdownArticle.sass'
-
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import "./MarkdownArticle.sass";
 
 type MarkdownArticleProps = {
   postId: string;
 };
 
-export default function MarkdownArticle({ postId }: MarkdownArticleProps) {
-  const [content, setContent] = useState<string>("");
+export default function MarkdownArticle({
+  postId,
+}: MarkdownArticleProps) {
+  const [content, setContent] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [articleHeight, setArticleHeight] = useState(0);
+
+  const articleRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -24,28 +28,28 @@ export default function MarkdownArticle({ postId }: MarkdownArticleProps) {
       setContent("");
 
       try {
-        // postId is the article slug.
         const response = await fetch(
-          `/posts/${postId}/CONTENT.md`,
-          { signal: controller.signal },
+          `/posts/${(postId)}/CONTENT.md`,
+          { signal: controller.signal }
         );
 
         if (!response.ok) {
           throw new Error(
             response.status === 404
               ? "Article not found."
-              : "Failed to load article.",
+              : "Failed to load article."
           );
         }
 
-        const markdown = await response.text();
-        setContent(markdown);
+        setContent(await response.text());
       } catch (err) {
         if (err instanceof Error && err.name === "AbortError") {
           return;
         }
 
-        setError(err instanceof Error ? err.message : "Something went wrong.");
+        setError(
+          err instanceof Error ? err.message : "Something went wrong."
+        );
       } finally {
         if (!controller.signal.aborted) {
           setLoading(false);
@@ -57,6 +61,22 @@ export default function MarkdownArticle({ postId }: MarkdownArticleProps) {
 
     return () => controller.abort();
   }, [postId]);
+
+  useEffect(() => {
+    const article = articleRef.current;
+    if (!article || loading || error) return;
+
+    const updateHeight = () => {
+      setArticleHeight(article.scrollHeight);
+    };
+
+    updateHeight();
+
+    const observer = new ResizeObserver(updateHeight);
+    observer.observe(article);
+
+    return () => observer.disconnect();
+  }, [content, loading, error]);
 
   if (loading) {
     return (
@@ -75,7 +95,7 @@ export default function MarkdownArticle({ postId }: MarkdownArticleProps) {
   }
 
   return (
-    <article className="markdown-article">
+    <article ref={articleRef} className="markdown-article">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
