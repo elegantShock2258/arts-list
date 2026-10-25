@@ -6,7 +6,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import styles from "./landing-featured.module.sass";
-import { getFeatured } from "@/app/server/actions/getFeatured";
+import { getFeatured } from "@/app/server/actions/FileCRUD";
 import FeaturedCard from "../FeaturedCard/FeaturedCard";
 
 export default async function LandingFeatured() {
@@ -34,7 +34,7 @@ export default async function LandingFeatured() {
                 <div>
                   <FeaturedCard
                     title={post.title}
-                    link={post.link}
+                    link={`/read/${post.link}`}
                     thumbnail={post.thumbnail}
                   />
                 </div>
