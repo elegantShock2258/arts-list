@@ -4,39 +4,36 @@
   min-height: 0;
   overflow-y: auto;
   overflow-x: hidden;
-  scrollbar-gutter: stable;
-}
-
-.masonryCanvas {
-  position: relative;
-  display: grid;
-  align-items: start;
-  gap: 24px;
-  width: 100%;
-  min-height: 100%;
-}
-
-.column {
-  position: relative;
-  min-width: 0;
-}
-
-.cardItem {
   box-sizing: border-box;
-  padding-bottom: 0;
+  padding: 8px 16px 24px;
 }
-.cardItem > a {
-  display: block;
+
+.masonry {
   width: 100%;
+  columns: 3;
+  column-gap: 24px;
 }
-.cardItem :global(img) {
+
+.card {
+  width: 100%;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0 0 24px;
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+}
+.card > a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 8px;
+}
+.card img {
   display: block;
   width: 100%;
   height: auto;
   object-fit: cover;
-}
-.cardItem:hover :global(img) {
-  transition: opacity 180ms ease;
 }
 
 .status,
@@ -47,6 +44,20 @@
 
 .error {
   color: #c0392b;
+}
+
+@media (max-width: 900px) {
+  .masonry {
+    columns: 2;
+  }
+}
+@media (max-width: 560px) {
+  .masonry {
+    columns: 1;
+  }
+  .gridViewport {
+    padding: 8px 12px 20px;
+  }
 }
 
 /*# sourceMappingURL=post-grid.module.css.map */
