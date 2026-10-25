@@ -10,7 +10,7 @@ export default async function PostPage({ params }: PageProps) {
   const { postId } = await params;
 
   return (
-    <main>
+    <main className="overflow-x-hidden">
       <MarkdownArticle postId={postId} />
     </main>
   );

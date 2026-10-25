@@ -35,11 +35,49 @@ function getTopRecentFolders(targetDir: string = "./posts"): FolderItem[] {
     return [];
   }
 }
+function getAllFolders(targetDir: string = "./posts"): FolderItem[] {
+  try {
+    const entries = fs.readdirSync(targetDir, { withFileTypes: true });
+
+    const folders: FolderItem[] = entries
+      .filter((entry) => entry.isDirectory())
+      .map((entry) => {
+        const fullPath = path.join(targetDir, entry.name);
+        const stats = fs.statSync(fullPath);
+        return {
+          name: entry.name,
+          absolutePath: fullPath.replace("public/", ""),
+          lastEdited: stats.mtime,
+        };
+      });
+
+    return folders
+      .filter((a) => !a.name.includes("."))
+      .sort((a, b) => b.lastEdited.getTime() - a.lastEdited.getTime())
+  } catch (error) {
+    console.error(`Error reading directory at ${targetDir}:`, error);
+    return [];
+  }
+}
 
 export async function getFeatured() {
   // fetch from git
   fetchPosts();
   const topFolders = getTopRecentFolders("./public/posts");
+
+  return topFolders.map((folder, key) => {
+    return {
+      thumbnail: `/${folder.absolutePath}/thumbnail.png`,
+      title: folder.name,
+      link: `/${folder.absolutePath}`,
+    };
+  });
+}
+
+export async function getAllPosts() {
+  // fetch from git
+  fetchPosts();
+  const topFolders = getAllFolders("./public/posts");
 
   return topFolders.map((folder, key) => {
     return {

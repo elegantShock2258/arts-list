@@ -10,7 +10,7 @@ export default function Page() {
     <div className="w-full overflow-x-hidden h-full">
       <LandingHero />
       <LandingFeatured />
-      <LandingTechniques />
+      {/*<LandingTechniques />*/}
       <LandingArchive />
     </div>
   );

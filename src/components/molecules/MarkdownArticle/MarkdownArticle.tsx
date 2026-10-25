@@ -95,7 +95,7 @@ export default function MarkdownArticle({
   }
 
   return (
-    <article ref={articleRef} className="markdown-article">
+    <article ref={articleRef} className="markdown-article overflow-x-hidden">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{

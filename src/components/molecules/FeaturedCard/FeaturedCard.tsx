@@ -1,7 +1,5 @@
-"use client";
 import Image from "next/image";
 import styles from "./FeaturedCard.module.sass";
-import { redirect } from "next/navigation";
 import Link from "next/link";
 
 export default function FeaturedCard(props: {
@@ -13,9 +11,6 @@ export default function FeaturedCard(props: {
     <Link href={props.link}>
       <div
         className="flex flex-col justify-center items-center gap-2"
-        onClick={() => {
-          redirect(props.link);
-        }}
       >
         <Image
           alt="thumbnail"
