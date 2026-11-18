@@ -8,8 +8,8 @@ export default function LandingHero() {
     <div
       className={`w-[100vw] h-[100vh] flex flex-col items-center pt-10 gap-2 overflow-hidden`}
     >
-      <div className={`${styles.title}`}>The Textile Index</div>
-      <div className={`${styles.navBar}`}>
+      {/*<div className={`${styles.title}`}>The Textile Index</div>*/}
+      {/*<div className={`${styles.navBar}`}>
         {["TECHNIQUES", "ARCHIVE", "ABOUT"].map((ele, key) => {
           return (
             <div key={key} className={styles.navButtons}>
@@ -17,7 +17,7 @@ export default function LandingHero() {
             </div>
           );
         })}
-      </div>
+      </div>*/}
       <div className={styles.parent}>
         <div className={styles.bg}>
           <div className={styles.leftBlouse}>
@@ -32,17 +32,14 @@ export default function LandingHero() {
           <div className={`${styles.title} ${styles.heroTitle}`}>
             The Textile Index
           </div>
+
           <div className={styles.desc}>
-            The Textile Index is an independent research archive documenting the
-            diverse textile traditions of India. It brings together knowledge of
-            textiles, materials, techniques, processes and the communities
-            behind them, making this information accessible to students,
-            designers, researchers and anyone curious about the textiles that
-            shape our cultural history.
+            A closer look at the fabrics, motifs, people and ideas that shape what we wear and live with. The Textile Index is where textiles meet fashion, craft, culture and everything in between.
           </div>
+
           <div className={styles.thread}>
             <Image src={thread} alt="thread" objectFit="cover" />
-          </div>
+            </div>
         </div>
       </div>
     </div>

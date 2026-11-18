@@ -11,7 +11,7 @@ export default function Page() {
       <LandingHero />
       <LandingFeatured />
       {/*<LandingTechniques />*/}
-      <LandingArchive />
+      {/*<LandingArchive />*/}
     </div>
   );
 }
