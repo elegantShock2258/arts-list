@@ -18,8 +18,10 @@ export default function FeaturedCard(props: {
             .split("/")
             .map((seg) => encodeURIComponent(seg))
             .join("/")}
+          sizes="300"
           width={300}
-          height={400}
+          height={300}
+          style={{objectFit:'cover', minWidth:300, minHeight:300,maxWidth: 300, maxHeight: 300}}
         />
         <div className={styles.title}>{props.title}</div>
       </div>
